@@ -2,7 +2,10 @@ use crate::common::tls_state::TlsState;
 
 use crate::client;
 
+#[cfg(feature = "futures")]
 use futures_io::{AsyncRead, AsyncWrite};
+#[cfg(feature = "futures-lite")]
+use futures_lite::{AsyncRead, AsyncWrite};
 use rustls::{ClientConfig, ClientConnection, OwnedTrustAnchor, RootCertStore, ServerName};
 use std::convert::TryFrom;
 use std::future::Future;

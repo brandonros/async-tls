@@ -2,8 +2,14 @@
 
 use crate::common::tls_state::TlsState;
 use crate::rusttls::stream::Stream;
+#[cfg(feature = "futures")]
 use futures_core::ready;
+#[cfg(feature = "futures-lite")]
+use futures_lite::ready;
+#[cfg(feature = "futures")]
 use futures_io::{AsyncRead, AsyncWrite};
+#[cfg(feature = "futures-lite")]
+use futures_lite::{AsyncRead, AsyncWrite};
 use rustls::ClientConnection;
 use std::future::Future;
 use std::pin::Pin;

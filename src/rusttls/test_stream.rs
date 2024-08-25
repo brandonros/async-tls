@@ -1,6 +1,9 @@
 use super::Stream;
 use futures_executor::block_on;
+#[cfg(feature = "futures")]
 use futures_io::{AsyncRead, AsyncWrite};
+#[cfg(feature = "futures-lite")]
+use futures_lite::{AsyncRead, AsyncWrite};
 use futures_util::io::{AsyncReadExt, AsyncWriteExt};
 use futures_util::task::{noop_waker_ref, Context};
 use futures_util::{future, ready};

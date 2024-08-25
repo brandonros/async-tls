@@ -1,5 +1,11 @@
+#[cfg(feature = "futures")]
 use futures_core::ready;
+#[cfg(feature = "futures-lite")]
+use futures_lite::ready;
+#[cfg(feature = "futures")]
 use futures_io::{AsyncRead, AsyncWrite};
+#[cfg(feature = "futures-lite")]
+use futures_lite::{AsyncRead, AsyncWrite};
 #[cfg(feature = "early-data")]
 use rustls::client::WriteEarlyData;
 use rustls::{ClientConnection, IoState, Reader, ServerConnection, Writer};
